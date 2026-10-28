@@ -30,3 +30,19 @@ body {
 a {
   text-underline-offset: 3px;
 }
+
+.prose-copy {
+  color: #60757a;
+  line-height: 1.75;
+}
+
+.prose-copy h2 {
+  margin-top: 2rem;
+  color: #17343b;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.prose-copy p {
+  max-width: 48rem;
+}
