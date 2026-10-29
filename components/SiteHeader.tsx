@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const personal = [
@@ -18,13 +19,7 @@ const business = [
   ["Small Business", "/small-business-insurance"],
 ];
 
-function Dropdown({
-  label,
-  items,
-}: {
-  label: string;
-  items: string[][];
-}) {
+function Dropdown({ label, items }: { label: string; items: string[][] }) {
   return (
     <details className="group relative">
       <summary className="cursor-pointer list-none py-3 font-medium marker:hidden">
@@ -38,7 +33,7 @@ function Dropdown({
           <Link
             key={href}
             href={href}
-            className="block rounded-xl px-4 py-3 text-sm text-[#29454b] transition hover:bg-[#eef3ef] hover:text-[#c56b38]"
+            className="block rounded-xl px-4 py-3 text-sm text-[#18363c] transition hover:bg-[#eef7f7] hover:text-[#0c7079]"
           >
             {title}
           </Link>
@@ -51,32 +46,35 @@ function Dropdown({
 export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-black/10 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-6 py-4 lg:px-8">
-        <Link href="/" className="flex shrink-0 items-center gap-3" aria-label="Wilson Insurance of Florida home">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d7a35c] bg-[#17343b] text-lg font-bold text-white">W</div>
-          <div>
-            <div className="text-sm font-semibold uppercase tracking-[0.18em] text-[#17343b]">Wilson Insurance</div>
-            <div className="text-xs uppercase tracking-[0.22em] text-[#65777c]">of Florida</div>
-          </div>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-3 lg:px-8">
+        <Link href="/" className="flex shrink-0 items-center" aria-label="Wilson Insurance of Florida home">
+          <Image
+            src="/brand/wilson-wide.webp"
+            alt="Wilson Insurance of Florida"
+            width={420}
+            height={127}
+            priority
+            className="h-auto w-[220px] sm:w-[260px]"
+          />
         </Link>
 
-        <nav className="hidden items-center gap-5 text-sm font-medium lg:flex">
+        <nav className="hidden items-center gap-5 text-sm font-medium text-[#182f34] xl:flex">
           <Dropdown label="Personal" items={personal} />
           <Dropdown label="Business" items={business} />
-          <Link href="/pet-insurance" className="hover:text-[#c56b38]">Pet</Link>
-          <Link href="/windshield-replacement" className="hover:text-[#c56b38]">Windshield Replacement</Link>
-          <Link href="/blog" className="hover:text-[#c56b38]">Blog</Link>
-          <Link href="/about" className="hover:text-[#c56b38]">About</Link>
-          <Link href="/contact" className="hover:text-[#c56b38]">Contact Us</Link>
+          <Link href="/pet-insurance" className="hover:text-[#0c7079]">Pet</Link>
+          <Link href="/windshield-replacement" className="hover:text-[#0c7079]">Windshield Replacement</Link>
+          <Link href="/blog" className="hover:text-[#0c7079]">Blog</Link>
+          <Link href="/about" className="hover:text-[#0c7079]">About</Link>
+          <Link href="/contact" className="hover:text-[#0c7079]">Contact Us</Link>
         </nav>
 
-        <Link href="/contact" className="rounded-full bg-[#d8743b] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#bd6130]">
+        <Link href="/contact" className="rounded-full bg-[#ff9638] px-5 py-3 text-sm font-semibold text-[#251218] transition hover:bg-[#ffad5f]">
           Get a Quote
         </Link>
       </div>
 
-      <div className="border-t border-black/5 px-6 py-2 lg:hidden">
-        <nav className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+      <div className="border-t border-black/5 px-5 py-2 xl:hidden">
+        <nav className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[#18363c]">
           <Dropdown label="Personal" items={personal} />
           <Dropdown label="Business" items={business} />
           <Link href="/pet-insurance">Pet</Link>
