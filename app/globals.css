@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f7f2;
-  --foreground: #19333a;
+  --background: #fffaf4;
+  --foreground: #172d32;
+  --brand-teal: #0b7079;
+  --brand-teal-dark: #075d67;
+  --brand-orange: #ff9638;
+  --brand-coral: #ff5573;
 }
 
 @theme inline {
@@ -12,13 +16,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -27,9 +27,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-a {
-  text-underline-offset: 3px;
-}
+a { text-underline-offset: 3px; }
 
 .prose-copy {
   color: #60757a;
@@ -38,11 +36,9 @@ a {
 
 .prose-copy h2 {
   margin-top: 2rem;
-  color: #17343b;
+  color: var(--brand-teal-dark);
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-.prose-copy p {
-  max-width: 48rem;
-}
+.prose-copy p { max-width: 48rem; }
