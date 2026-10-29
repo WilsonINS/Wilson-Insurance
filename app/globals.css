@@ -1,12 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fffaf4;
-  --foreground: #172d32;
-  --brand-teal: #0b7079;
-  --brand-teal-dark: #075d67;
-  --brand-orange: #ff9638;
-  --brand-coral: #ff5573;
+  --background: #f7f9fc;
+  --foreground: #1f2f3e;
+  --brand-blue: #002c5f;
+  --brand-blue-dark: #001f3f;
+  --brand-slate: #a2aaad;
 }
 
 @theme inline {
@@ -30,13 +29,13 @@ body {
 a { text-underline-offset: 3px; }
 
 .prose-copy {
-  color: #60757a;
+  color: #66737f;
   line-height: 1.75;
 }
 
 .prose-copy h2 {
   margin-top: 2rem;
-  color: var(--brand-teal-dark);
+  color: var(--brand-blue);
   font-size: 1.5rem;
   font-weight: 700;
 }
