@@ -1,69 +1,12 @@
-import Image from "next/image";
-
-export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
-}
+import Link from "next/link";
+import type { Metadata } from "next";
+import { personal, business } from "@/lib/content";
+export const metadata: Metadata={title:"Florida Home, Auto & Business Insurance | Wilson Insurance of Florida",description:"Explore home, auto, flood, boat, and business insurance with Wilson Insurance of Florida. Clear answers and local independent guidance."};
+const featured=["home-insurance","auto-insurance","flood-insurance","boat-insurance","renters-insurance"];
+export default function Home(){return <main id="main-content">
+<section className="hero"><div className="container hero-layout"><div className="hero-copy"><p className="eyebrow">INDEPENDENT INSURANCE • FLORIDA</p><h1>Insurance that fits <em>your Florida life.</em></h1><p className="lead">From the house you call home to the business you&apos;re building, get straightforward guidance from a local independent insurance agency.</p><div className="hero-actions"><Link className="btn btn-primary" href="/contact">Request a quote <span aria-hidden="true">→</span></Link><Link className="text-link" href="#explore">Explore coverage ↓</Link></div><p className="hero-proof">✳ Independent advice &nbsp; · &nbsp; Local service &nbsp; · &nbsp; Florida focused</p></div><div className="hero-art" role="img" aria-label="Stylized Florida coastal home with palm tree and water"><div className="art-sun"></div><div className="art-cloud"></div><div className="art-house"><div className="art-roof"></div><div className="art-walls"><div className="art-window"></div><div className="art-door"></div><div className="art-window"></div></div></div><div className="art-palm"><span>✳</span></div><div className="art-sand"></div><div className="art-wave"></div><div className="art-wave second"></div><span className="art-note">Built for life in the Sunshine State</span></div></div></section>
+<section className="section" id="explore"><div className="container"><p className="eyebrow">FIND YOUR FIT</p><h2>What can we help you protect?</h2><p className="section-intro">Start with what matters to you. Explore your options without the insurance jargon.</p><div className="product-grid">{personal.filter(p=>featured.includes(p.slug)).map((p,i)=><Link className="product-card" href={`/insurance/${p.slug}`} key={p.slug}><span className="product-icon" aria-hidden="true">{["⌂","↗","≈","⛵","⌑"][i]}</span><h3>{p.title}</h3><p>{p.tagline}</p><span className="card-arrow" aria-hidden="true">↗</span></Link>)}<Link className="product-card product-card-feature" href="/resources"><span className="product-icon" aria-hidden="true">✳</span><h3>Looking for something else?</h3><p>Browse all our insurance guides.</p><span className="card-arrow" aria-hidden="true">↗</span></Link></div></div></section>
+<section className="section section-cream"><div className="container split-section"><div><p className="eyebrow">FOR YOUR BUSINESS</p><h2>Big plans deserve thoughtful protection.</h2><p>Running a business comes with moving parts. Explore options for your property, employees, vehicles and liability exposures.</p><Link className="btn btn-dark" href="/contact">Talk business insurance →</Link></div><div className="business-links">{business.slice(0,5).map(p=><Link href={`/insurance/${p.slug}`} key={p.slug}><span>{p.title}</span><span aria-hidden="true">↗</span></Link>)}</div></div></section>
+<section className="section"><div className="container"><p className="eyebrow">THE WILSON APPROACH</p><h2>Insurance without the guesswork.</h2><div className="steps"><article><span>01</span><h3>Tell us your story</h3><p>Share what you want to protect and what concerns you most.</p></article><article><span>02</span><h3>Understand the options</h3><p>Learn about common coverage choices, limitations and tradeoffs.</p></article><article><span>03</span><h3>Make an informed choice</h3><p>Discuss which options may fit your needs and budget.</p></article></div></div></section>
+<section className="cta-band"><div className="container cta-inner"><div><p className="eyebrow">LET&apos;S TALK</p><h2>Ready for insurance that makes sense?</h2><p>We&apos;re here to help you take the next step.</p></div><Link href="/contact" className="btn btn-white">Contact our agency →</Link></div></section>
+</main>}
