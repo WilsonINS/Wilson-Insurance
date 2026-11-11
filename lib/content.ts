@@ -1,0 +1,192 @@
+export type Product = { slug: string; title: string; tagline: string; intro: string; coverages: string[]; considerations: string[]; tips: string[]; group: "Personal" | "Business" };
+const raw = [
+  [
+    "home-insurance",
+    "Home Insurance",
+    "Protect your home and the life you have built.",
+    "Home insurance may help pay for covered damage to your dwelling, belongings, and certain liability claims.",
+    "Dwelling and other structures",
+    "Personal property",
+    "Loss of use after a covered loss",
+    "Personal liability and medical payments",
+    "Flood damage generally needs separate coverage",
+    "Wind or hurricane deductibles may differ",
+    "Review replacement cost and roof information",
+    "Ask about available wind mitigation credits"
+  ],
+  [
+    "auto-insurance",
+    "Auto Insurance",
+    "Coverage for the roads ahead.",
+    "Florida drivers should understand required coverages, optional liability protection, and what happens when an uninsured driver causes a crash.",
+    "Personal injury protection (PIP)",
+    "Property damage liability",
+    "Bodily injury liability options",
+    "Collision, comprehensive and uninsured motorist coverage",
+    "PIP is subject to policy terms and statutory limitations",
+    "Basic Florida minimums do not cover every loss",
+    "Compare limits as well as price",
+    "Ask about household drivers and vehicle use"
+  ],
+  [
+    "flood-insurance",
+    "Flood Insurance",
+    "Don't let a flood become a financial surprise.",
+    "Most standard homeowners policies exclude flood damage. Separate flood insurance may be available through the NFIP or private insurers.",
+    "Building protection",
+    "Contents protection",
+    "NFIP and private market options",
+    "Coverage for eligible flood events",
+    "Waiting periods and exclusions may apply",
+    "Coverage for basements and certain property may be limited",
+    "Understand your flood zone and elevation",
+    "Review coverage before storm season"
+  ],
+  [
+    "boat-insurance",
+    "Boat Insurance",
+    "More confidence on the water.",
+    "Boat coverage can address physical damage, liability and other boating risks depending on the policy and the way you use your vessel.",
+    "Hull and equipment",
+    "Boating liability",
+    "Medical payments",
+    "Uninsured boater and towing options",
+    "Navigation territory and named-storm restrictions may apply",
+    "Wear, tear and mechanical breakdown may be excluded",
+    "Review horsepower and operators",
+    "Discuss storage and seasonal use"
+  ],
+  [
+    "renters-insurance",
+    "Renters Insurance",
+    "Protect what you own, even when you rent.",
+    "A landlord's policy usually doesn't insure a tenant's personal belongings or personal liability.",
+    "Personal belongings",
+    "Personal liability",
+    "Additional living expenses",
+    "Optional scheduled valuables",
+    "Flood is generally excluded",
+    "Special limits may apply to certain valuables",
+    "Make a home inventory",
+    "Consider replacement cost coverage"
+  ],
+  [
+    "rv-insurance",
+    "RV Insurance",
+    "Protection wherever you park.",
+    "RV coverage can combine vehicle protection with special options for personal belongings and vacation use.",
+    "Liability coverage",
+    "Comprehensive and collision",
+    "Personal effects options",
+    "Roadside assistance options",
+    "Full-time living may need special coverage",
+    "Usage and storage affect eligibility",
+    "Tell your agent how often you travel",
+    "Review attached accessories"
+  ],
+  [
+    "motorcycle-insurance",
+    "Motorcycle Insurance",
+    "Enjoy the ride with coverage that fits.",
+    "Motorcycle policies can help with physical damage, liability and optional equipment protection.",
+    "Liability",
+    "Collision and comprehensive",
+    "Accessory coverage options",
+    "Medical or uninsured motorist options",
+    "Track and racing activity may be excluded",
+    "Passenger and equipment terms vary",
+    "Disclose custom parts",
+    "Compare deductibles"
+  ],
+  [
+    "seasonal-secondary-homes",
+    "Seasonal & Secondary Homes",
+    "Coverage when you're not always home.",
+    "Seasonal and secondary residences may have different underwriting, occupancy and vacancy conditions than a primary home.",
+    "Dwelling protection",
+    "Personal property options",
+    "Liability",
+    "Other structures",
+    "Vacancy or unoccupancy terms matter",
+    "Flood requires separate review",
+    "Confirm occupancy patterns",
+    "Discuss property monitoring"
+  ],
+  [
+    "general-liability",
+    "General Liability",
+    "Protection for everyday business liability.",
+    "Commercial general liability can help with certain third-party injury, property damage and personal or advertising injury claims.",
+    "Bodily injury",
+    "Property damage",
+    "Personal and advertising injury",
+    "Products and completed operations, where included",
+    "Professional errors generally need other coverage",
+    "Employee injuries are generally not covered by CGL",
+    "Review contractual insurance requirements",
+    "Discuss subcontractor exposures"
+  ],
+  [
+    "commercial-property",
+    "Commercial Property",
+    "Protect the place and property your business relies on.",
+    "Commercial property insurance may cover qualifying damage to buildings, business personal property and more.",
+    "Buildings",
+    "Business personal property",
+    "Business income options",
+    "Equipment breakdown options",
+    "Flood is commonly excluded",
+    "Valuation and coinsurance terms matter",
+    "Inventory major equipment",
+    "Review business income needs"
+  ],
+  [
+    "commercial-auto",
+    "Commercial Auto",
+    "Coverage for vehicles used in business.",
+    "Commercial auto policies can address liability and physical damage for eligible vehicles used in business operations.",
+    "Auto liability",
+    "Collision and comprehensive",
+    "Uninsured motorist options",
+    "Hired and non-owned auto options",
+    "Personal auto policies may not cover business use",
+    "Driver, vehicle and radius rules may apply",
+    "List all drivers and vehicles",
+    "Discuss trailers and vehicle use"
+  ],
+  [
+    "small-business",
+    "Small Business Insurance",
+    "Make coverage work for the way you work.",
+    "Small business packages can combine important protections while leaving room for coverage tailored to your operations.",
+    "General liability",
+    "Commercial property",
+    "Business income",
+    "Optional cyber and equipment coverage",
+    "Packages do not automatically cover every risk",
+    "Professional or auto exposures may need separate policies",
+    "Review lease and contract requirements",
+    "Assess your largest interruption risks"
+  ],
+  [
+    "workers-compensation",
+    "Workers' Compensation",
+    "Help protect employees and your business.",
+    "Workers' compensation generally addresses covered work-related injuries and illnesses, subject to Florida requirements and policy terms.",
+    "Medical benefits",
+    "Wage replacement benefits",
+    "Employer liability section",
+    "Return-to-work support",
+    "Eligibility and exemptions depend on state law",
+    "Independent contractor classification can be complex",
+    "Review payroll and job classifications",
+    "Verify Florida exemption requirements"
+  ]
+] as string[][];
+export const products: Product[] = raw.map((p, i) => ({
+ slug:p[0], title:p[1], tagline:p[2], intro:p[3], coverages:p.slice(4,8), considerations:p.slice(8,10), tips:p.slice(10,12), group:i<8?"Personal":"Business"
+}));
+export const personal = products.filter(p => p.group==="Personal");
+export const business = products.filter(p => p.group==="Business");
+export const siteUrl = "https://wilsonif.com";
+export const agencyName = "Wilson Insurance of Florida";
